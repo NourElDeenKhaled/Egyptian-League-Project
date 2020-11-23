@@ -11,7 +11,6 @@ namespace EgyptianLeagueManagementSystem
         
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome Github!");
             Console.WriteLine("--- Welcom to Egyption leaguge ---");
             while (true)
             {
