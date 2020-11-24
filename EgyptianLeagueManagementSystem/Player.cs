@@ -13,17 +13,15 @@ namespace EgyptianLeagueManagementSystem
         Defender,
         Goalkeeper
     }
-    class Player
+    class Player : Person
     {
         public static List<Player> playersName = new List<Player>();
-        private string name;
-        private int number;
         private string team;
         private PlayerRole role;
-        private int age;
         private int score;
         private int rank;
-        public Player() { 
+        public Player()
+        {
         }
 
         public Player(int id, string _name, string teamname, string pr, int _age, int _score, int _rank)
@@ -31,7 +29,8 @@ namespace EgyptianLeagueManagementSystem
             number = id;
             name = _name;
             team = teamname;
-            switch (pr) {
+            switch (pr)
+            {
                 case "Forward":
                     role = PlayerRole.Forward;
                     break;
@@ -150,7 +149,7 @@ namespace EgyptianLeagueManagementSystem
                 "Player Role: {4}\n" +
                 "Player Score: {5}\n" +
                 "Player Rank: {6}"
-                ,name, number, team, age, role, score, rank
+                , name, number, team, age, role, score, rank
                 );
         }
         public void DisplayPlayerInfo(int id)
@@ -174,19 +173,19 @@ namespace EgyptianLeagueManagementSystem
             }
         }
 
-        public static void DisplayAllPlayerList() 
+        public static void DisplayAllPlayerList()
         {
             playersName = ReadListofplayersfromfile();
             foreach (Player t in playersName)
                 //t.DisplayPlayerInfo(t.getNumber());
                 Console.WriteLine(t.ToString());
         }
-       
+
         public static void UpdateInfo(string _name)
         {
             playersName = ReadListofplayersfromfile();
-           
-            for(int i = 0; i < playersName.Count(); i++)
+
+            for (int i = 0; i < playersName.Count(); i++)
             {
                 if (playersName[i].getName() == _name)
                 {
@@ -221,8 +220,8 @@ namespace EgyptianLeagueManagementSystem
                 }
                 updateplayeronfile(playersName);
             }
-           
-         
+
+
         }
 
         public static void SearchForPlayer(int _number, string _name)
@@ -231,23 +230,23 @@ namespace EgyptianLeagueManagementSystem
             bool flag = true;
             foreach (Player item in playersName)
             {
-                if (item.getNumber() == _number && item.getName() == _name )
+                if (item.getNumber() == _number && item.getName() == _name)
                 {
                     Console.WriteLine("Player Found!");
                     //item.DisplayPlayerInfo(item.getNumber());
                     Console.WriteLine(item.ToString());
-                    flag=false;
+                    flag = false;
                     break;
                 }
             }
-            if (flag) 
-                Console.WriteLine("Player Not Found!");   
+            if (flag)
+                Console.WriteLine("Player Not Found!");
         }
 
         public static void insertplayertofile(Player p)
         {
             StreamWriter writer = File.AppendText("players.txt");
-            string line = string.Format(p.number+"-"+p.name +"-"+ p.team +"-"+p.role+"-"+p.age+"-"+p.score+"-"+p.rank);
+            string line = string.Format(p.number + "-" + p.name + "-" + p.team + "-" + p.role + "-" + p.age + "-" + p.score + "-" + p.rank);
             writer.WriteLine(line);
             writer.Close();
         }
@@ -257,10 +256,10 @@ namespace EgyptianLeagueManagementSystem
             StreamWriter writer = File.AppendText("players.txt");
             for (int i = 0; i < list.Count(); i++)
             {
-                string line = string.Format(list[i].number.ToString()+"-"+list[i].name + "-" + list[i].team
-                    +"-" + list[i].role.ToString() + "-"+list[i].age + "-" +list[i].score + "-" + list[i].rank);
+                string line = string.Format(list[i].number.ToString() + "-" + list[i].name + "-" + list[i].team
+                    + "-" + list[i].role.ToString() + "-" + list[i].age + "-" + list[i].score + "-" + list[i].rank);
                 writer.WriteLine(line);
-               
+
             }
             writer.Close();
         }
@@ -274,12 +273,12 @@ namespace EgyptianLeagueManagementSystem
             while ((line = Textfile.ReadLine()) != null)
             {
                 string[] s = line.Split('-');
-                Player p = new Player(int.Parse(s[0]), s[1], s[2],s[3],int.Parse(s[4]), int.Parse(s[5]), int.Parse(s[6]));
+                Player p = new Player(int.Parse(s[0]), s[1], s[2], s[3], int.Parse(s[4]), int.Parse(s[5]), int.Parse(s[6]));
                 list.Add(p);
             }
 
             Textfile.Close();
-           
+
             return list;
 
         }
