@@ -179,14 +179,13 @@ namespace EgyptianLeagueManagementSystem
 
                         Console.WriteLine("--- Please Enter a number : ---");
                         Console.WriteLine("1- Insert a New Match -");
-                        Console.WriteLine("2- Display Match Details -");
-                        Console.WriteLine("3- Update Match  -");
-                        Console.WriteLine("4- Display All Matches -");
-                        Console.WriteLine("5- Back to Main menu");
+                        Console.WriteLine("2- Update Match  -");
+                        Console.WriteLine("3- Display All Matches -");
+                        Console.WriteLine("4- Back to Main menu");
 
                         Match m = new Match();
                         int choose = int.Parse(Console.ReadLine());
-                        if (choose == 5)
+                        if (choose == 4)
                             break;
                         switch (choose)
                         {
@@ -197,18 +196,12 @@ namespace EgyptianLeagueManagementSystem
                                 }
                             case 2:
                                 {
-                                    //m.Match_Details();
-                                    Console.WriteLine(m.ToString());
-                                    break;
-                                }
-                            case 3:
-                                {
                                     Console.WriteLine("Enter the id of the match you want to update :");
                                     int id = int.Parse(Console.ReadLine());
                                     Match.Update_Match(id);
                                     break;
                                 }
-                            case 4:
+                            case 3:
                                 {
                                     Match.Held_To_be_Held();
                                     break;

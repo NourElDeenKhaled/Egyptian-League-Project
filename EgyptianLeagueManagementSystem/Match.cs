@@ -376,8 +376,8 @@ namespace EgyptianLeagueManagementSystem
         }
         public static void UpdateFile(Match m)
         {
-            string newline = string.Format(m.ID + "-" + m.Date.ToString() + "-" + m.Match_Teams[0] + "-" + 0 + "-" +
-                    m.Match_Teams[1] + "-" + 0 + "-" + m.Stadium_Name + "-" + m.Match_Referee);
+            string newline = string.Format(m.ID + "-" + m.Date.ToString() + "-" + m.Match_Teams[0] + "-" + m.Team1_Score + "-" +
+                    m.Match_Teams[1] + "-" + m.Team2_Score + "-" + m.Stadium_Name + "-" + m.Match_Referee);
 
             List<string> L = File.ReadAllLines("match.txt").ToList();
             int index = 0;
